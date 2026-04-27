@@ -65,6 +65,7 @@ export default function About() {
                 src="/about-img.png" 
                 alt="스튜디오 비전" 
                 fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover" 
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-transparent" />

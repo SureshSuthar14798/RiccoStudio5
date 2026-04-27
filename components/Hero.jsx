@@ -44,8 +44,10 @@ function MagneticElement({ children, range = 50 }) {
 function TiltCard({ children, className }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [10, -10]);
-  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+  
+  // Use springs for smooth rotation transitions
+  const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]), { stiffness: 100, damping: 30 });
+  const rotateY = useSpring(useTransform(x, [-100, 100], [-10, 10]), { stiffness: 100, damping: 30 });
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -73,8 +75,7 @@ function TiltCard({ children, className }) {
         rotateY,
         transformStyle: "preserve-3d",
       }}
-      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-      className={className}
+      className={`${className} will-change-transform`}
     >
       {children}
     </motion.div>
@@ -94,55 +95,42 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Tech Background Image with Parallax */}
         <motion.div 
-          style={{ y: useTransform(scrollY, [0, 800], [0, 200]), scale: 1.1 }}
-          className="absolute inset-0 z-0"
+          style={{ y: useTransform(scrollY, [0, 800], [0, 100]), scale: 1.05 }}
+          className="absolute inset-0 z-0 will-change-transform"
         >
           <Image 
             src="/hero-bg.png" 
             alt="Tech Background" 
             fill 
-            className="object-cover opacity-40"
+            sizes="100vw"
+            className="object-cover opacity-30"
             priority
           />
           {/* Gradient Overlay for Text Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-80" />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] opacity-90" />
+          <div className="absolute inset-0 bg-black/50" />
         </motion.div>
 
-        {/* Animated Blobs */}
+        {/* Optimized Animated Blobs - Reduced blur for performance */}
         <motion.div
           animate={{
-            x: [0, 100, -50, 0],
-            y: [0, -50, 100, 0],
-            scale: [1, 1.2, 0.8, 1],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-indigo-600/20 blur-[120px] mix-blend-screen"
-        />
-        <motion.div
-          animate={{
-            x: [0, -120, 80, 0],
-            y: [0, 100, -60, 0],
-            scale: [1, 0.9, 1.3, 1],
+            x: [0, 80, -40, 0],
+            y: [0, -40, 80, 0],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-violet-600/20 blur-[100px] mix-blend-screen"
+          className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-600/10 blur-[80px] mix-blend-screen will-change-transform"
         />
         <motion.div
           animate={{
-            x: [0, 50, -100, 0],
-            y: [0, 80, -40, 0],
-            scale: [1, 1.5, 0.7, 1],
+            x: [0, -100, 60, 0],
+            y: [0, 80, -50, 0],
           }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-cyan-600/10 blur-[140px] mix-blend-screen"
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-violet-600/10 blur-[70px] mix-blend-screen will-change-transform"
         />
         
-        {/* Noise Overlay for Texture */}
-        <div className="absolute inset-0 opacity-[0.03] noise pointer-events-none" />
-        
-        {/* Subtle Vignette */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent to-black/40" />
+        {/* Simplified Vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
       </div>
 
       {/* Dynamic Background Overlays */}
@@ -242,6 +230,7 @@ export default function Hero() {
               src="/hero-3d.png" 
               alt="프리미엄 3D 비주얼" 
               fill 
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" 
               priority 
             />

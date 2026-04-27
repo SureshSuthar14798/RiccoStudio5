@@ -87,6 +87,7 @@ export default function Services() {
                   src={s.image}
                   alt={s.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none"
                 />
                 {/* Dark Gradient Overlay for Text Readability */}
