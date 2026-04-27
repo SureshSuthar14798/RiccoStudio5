@@ -50,26 +50,32 @@ function ServiceCard({ s, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="group relative border-b border-gray-100 py-12 md:py-20 cursor-pointer overflow-hidden"
+      className="group relative border-b border-gray-100 py-5 md:py-20 cursor-pointer overflow-hidden"
     >
-      <div className="container-main relative z-10 grid lg:grid-cols-[0.5fr_1.5fr_0.5fr] items-center gap-8 md:gap-12">
-        {/* Number */}
-        <span className="text-xl font-black text-gray-200 group-hover:text-indigo-500 transition-colors duration-500">
-          {s.id}
-        </span>
+      <div className="container-main relative z-10 grid lg:grid-cols-[0.5fr_1.5fr_0.5fr] items-center gap-6 md:gap-12">
+        {/* Number & Arrow for Mobile Row */}
+        <div className="flex items-center justify-between lg:block">
+          <span className="text-sm md:text-xl font-black text-gray-200 group-hover:text-indigo-500 transition-colors duration-500">
+            {s.id}
+          </span>
+          {/* Arrow for Mobile only */}
+          <div className="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center lg:hidden">
+            <HiArrowRight className="text-lg -rotate-45" />
+          </div>
+        </div>
 
         {/* Content */}
-        <div className="flex flex-col gap-4">
-          <h3 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter group-hover:translate-x-4 transition-transform duration-700 ease-out">
+        <div className="flex flex-col gap-2 md:gap-4">
+          <h3 className="text-2xl md:text-6xl font-black text-gray-900 tracking-tighter group-hover:translate-x-4 transition-transform duration-700 ease-out">
             {s.title}
           </h3>
-          <p className="text-gray-400 text-sm md:text-lg font-medium tracking-tight max-w-xl group-hover:text-gray-600 transition-colors duration-500">
+          <p className="text-gray-400 text-[10px] md:text-lg font-medium tracking-tight max-w-xl group-hover:text-gray-600 transition-colors duration-500">
             {s.subtitle}
           </p>
         </div>
 
-        {/* Arrow / Action */}
-        <div className="flex justify-end">
+        {/* Arrow for Desktop */}
+        <div className="hidden lg:flex justify-end">
           <div className="w-16 h-16 rounded-full border border-gray-100 flex items-center justify-center group-hover:bg-gray-900 group-hover:text-white group-hover:border-gray-900 transition-all duration-500">
             <HiArrowRight className="text-2xl -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
           </div>
@@ -111,22 +117,22 @@ export default function Services() {
   const containerRef = useRef(null);
 
   return (
-    <section id="services" ref={containerRef} className="py-32 bg-white overflow-hidden">
-      <div className="container-main mb-24">
+    <section id="services" ref={containerRef} className="pb-0 py-20 md:py-32 bg-white overflow-hidden">
+      <div className="container-main mb-12 md:mb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-12"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-12"
         >
           <div className="max-w-2xl">
-            <span className="text-[10px] font-black tracking-[0.4em] uppercase text-indigo-500 mb-6 block">Our Expertise</span>
-            <h2 className="text-5xl md:text-8xl font-black text-gray-900 leading-[0.85] tracking-tighter">
+            <span className="text-[10px] font-black tracking-[0.4em] uppercase text-indigo-500 mb-4 md:mb-6 block">Our Expertise</span>
+            <h2 className="text-4xl md:text-8xl font-black text-gray-900 leading-[0.9] md:leading-[0.85] tracking-tighter">
               세상을 변화시키는 <br />
               <span className="gradient-text italic">디지털 전문성.</span>
             </h2>
           </div>
-          <p className="max-w-sm text-gray-400 font-medium leading-relaxed">
+          <p className="max-w-sm text-gray-400 text-xs md:text-sm font-medium leading-relaxed">
             우리는 혁신적인 기술과 창의적인 디자인의 경계에서 브랜드의 무한한 가능성을 현실로 구현합니다.
           </p>
         </motion.div>
@@ -136,15 +142,6 @@ export default function Services() {
         {services.map((s, i) => (
           <ServiceCard key={s.id} s={s} index={i} />
         ))}
-      </div>
-      
-      {/* Scroll Indicator / Label */}
-      <div className="container-main mt-20 flex justify-between items-center text-[10px] font-black tracking-[0.3em] text-gray-300 uppercase">
-        <span>© Ricco Studio 2026</span>
-        <div className="flex gap-8">
-          <span>Explore Services</span>
-          <span>Scroll to Discover</span>
-        </div>
       </div>
     </section>
   );

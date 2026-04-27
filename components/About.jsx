@@ -22,7 +22,7 @@ export default function About() {
     <section ref={containerRef} id="about" className="section-pad bg-white overflow-hidden">
       <div className="container-main">
         {/* Large Aesthetic Header */}
-        <div className="mb-32 relative">
+        <div className="mb-10 lg:mb-32 relative">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -52,7 +52,7 @@ export default function About() {
         </div>
 
         {/* Visual Split */}
-        <div className="grid lg:grid-cols-2 gap-24 items-center mb-32">
+        <div className="grid lg:grid-cols-2 gap-24 items-center lg:mb-32">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}

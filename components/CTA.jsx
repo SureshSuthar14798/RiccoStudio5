@@ -16,7 +16,7 @@ export default function CTA() {
   };
 
   return (
-    <section id="cta" className="relative py-20 overflow-hidden bg-gray-900">
+    <section id="cta" className="relative py-10 lg:py-20 overflow-hidden bg-gray-900">
       {/* Massive Background Text */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] select-none pointer-events-none">
         <span className="text-[20vw] font-black text-white leading-none tracking-tighter">
@@ -100,7 +100,7 @@ export default function CTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="mt-32 flex gap-12 text-[10px] font-black tracking-[0.2em] text-gray-600 uppercase"
+            className="mt-10 lg:mt-32 flex gap-12 text-[10px] font-black tracking-[0.2em] text-gray-600 uppercase"
           >
             <span>서울, 대한민국</span>
             <span>2016년 설립</span>

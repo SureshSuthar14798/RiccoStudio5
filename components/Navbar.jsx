@@ -23,10 +23,15 @@ export default function Navbar() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("nav-open");
     } else {
       document.body.style.overflow = "unset";
+      document.body.classList.remove("nav-open");
     }
-    return () => { document.body.style.overflow = "unset"; };
+    return () => { 
+      document.body.style.overflow = "unset"; 
+      document.body.classList.remove("nav-open");
+    };
   }, [menuOpen]);
 
   const handleNav = (href) => {
@@ -122,7 +127,7 @@ export default function Navbar() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2 + i * 0.1 }}
                   onClick={() => handleNav(link.href)}
-                  className="text-5xl font-black text-gray-900 hover:text-indigo-600 transition-colors tracking-tighter text-left"
+                  className="text-xl font-black text-gray-900 hover:text-indigo-600 transition-colors tracking-tighter text-left"
                 >
                   {link.label}
                 </motion.button>
@@ -137,7 +142,7 @@ export default function Navbar() {
             >
               <button 
                 onClick={() => handleNav("#cta")}
-                className="w-full bg-gray-900 text-white py-6 rounded-2xl text-lg font-black uppercase tracking-widest"
+                className="w-full bg-gray-900 text-white py-3 rounded-2xl text-lg font-black uppercase tracking-widest"
               >
                 무료 상담 시작하기
               </button>

@@ -28,7 +28,7 @@ const techLogos = [
 
 export default function TechStack() {
   return (
-    <section className="py-24 bg-white overflow-hidden border-t border-gray-100">
+    <section className="lg:py-24 py-12 bg-white overflow-hidden border-t border-gray-100">
       <div className="container-main mb-16 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -71,7 +71,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative py-32 bg-[#050505] overflow-hidden">
+    <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#050505] overflow-hidden">
       {/* Background Tech Elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-full h-full" style={{ 
