@@ -10,7 +10,7 @@ const projects = [
     id: 1,
     title: "루나 커머스",
     category: "웹",
-    year: "2024",
+    year: "2026",
     tags: ["넥스트 JS", "이커머스"],
     image: "/projects/luna.png",
     accent: "#6366f1",
@@ -19,7 +19,7 @@ const projects = [
     id: 2,
     title: "제로 앱",
     category: "모바일",
-    year: "2024",
+    year: "2026",
     tags: ["리액트 네이티브", "핀테크"],
     image: "/projects/zero.png",
     accent: "#06b6d4",
@@ -183,15 +183,15 @@ export default function Portfolio() {
           <span className="section-label">포트폴리오</span>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8 md:mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-[0.85] tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-[0.9] lg:leading-[0.85] tracking-tight"
           >
-            엄선된 <span className="gradient-text italic">작업.</span>
+            엄선된 <br className="md:hidden" /> <span className="gradient-text italic">작업.</span>
           </motion.h2>
 
           {/* Filter tabs */}
@@ -200,16 +200,16 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="flex flex-wrap gap-2"
+            className="flex items-center gap-2 overflow-x-auto pb-4 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0"
           >
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
+                className={`px-6 py-2.5 rounded-full text-[10px] md:text-xs font-black whitespace-nowrap uppercase tracking-widest transition-all duration-300 ${
                   active === cat
-                    ? "bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-200"
-                    : "bg-gray-100 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600"
+                    ? "bg-gray-900 text-white shadow-xl shadow-gray-200"
+                    : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                 }`}
               >
                 {cat}

@@ -45,7 +45,7 @@ export default function TechStack() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-5xl mb-5 font-black text-gray-900 tracking-tighter"
+          className="text-4xl md:text-5xl mb-8 font-black text-gray-900 tracking-tighter"
         >
           우리가 사용하는 <span className="gradient-text">핵심 기술.</span>
         </motion.h2>
@@ -56,18 +56,18 @@ export default function TechStack() {
         <motion.div 
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="flex whitespace-nowrap gap-12 items-center py-4"
+          className="flex whitespace-nowrap gap-8 md:gap-12 items-center py-4"
         >
           {[...techLogos, ...techLogos].map((tech, i) => (
             <div 
               key={i} 
-              className="flex items-center gap-4 group cursor-pointer px-8 py-4 rounded-2xl hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-3 md:gap-4 group cursor-pointer px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl hover:bg-gray-50 transition-colors"
             >
               <tech.icon 
-                className="text-4xl md:text-5xl transition-all duration-500 filter grayscale group-hover:grayscale-0" 
+                className="text-3xl md:text-5xl transition-all duration-500 filter grayscale group-hover:grayscale-0" 
                 style={{ color: tech.color }}
               />
-              <span className="text-xl md:text-2xl font-black text-gray-300 group-hover:text-gray-900 transition-colors">
+              <span className="text-lg md:text-2xl font-black text-gray-300 group-hover:text-gray-900 transition-colors">
                 {tech.name}
               </span>
             </div>

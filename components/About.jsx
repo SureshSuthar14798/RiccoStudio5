@@ -56,26 +56,33 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            whileHover={{ y: -10 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative"
+            className="relative group"
           >
-            <div className="relative rounded-[60px] overflow-hidden aspect-[4/5] bg-gray-50 shadow-2xl">
+            <div className="relative rounded-[60px] overflow-hidden aspect-[4/5] bg-gray-50 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
               <Image 
-                src="/about-img.png" 
+                src="/about-tech.png" 
                 alt="스튜디오 비전" 
                 fill 
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover" 
+                className="object-cover transition-transform duration-700 group-hover:scale-110" 
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
             {/* Decorative Label */}
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-[#fafafa] border border-gray-100 flex items-center justify-center p-8 text-center shadow-xl">
-              <span className="text-[9px] font-black tracking-widest text-gray-400 uppercase leading-relaxed">
+            <motion.div 
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-white border border-gray-100 flex items-center justify-center p-8 text-center shadow-2xl z-10 transition-colors group-hover:border-indigo-100"
+            >
+              <span className="text-[9px] font-black tracking-widest text-gray-400 uppercase leading-relaxed group-hover:text-indigo-600 transition-colors">
                 서울 기반 크리에이티브 스튜디오 · 2016년부터
               </span>
-            </div>
+            </motion.div>
+
+            {/* Background Glow */}
+            <div className="absolute -inset-10 bg-indigo-500/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
           </motion.div>
 
           <div className="flex flex-col gap-16">

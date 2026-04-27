@@ -93,9 +93,19 @@ export default function Hero() {
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden pt-32 pb-24">
       {/* Amazing Liquid Mesh Background Animation */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Tech Background Image with Parallax */}
+        {/* Tech Background Image with Parallax & Continuous Motion */}
         <motion.div 
-          style={{ y: useTransform(scrollY, [0, 800], [0, 100]), scale: 1.05 }}
+          style={{ y: useTransform(scrollY, [0, 800], [0, 100]) }}
+          animate={{ 
+            scale: [1.1, 1.15, 1.1],
+            x: [0, 20, -20, 0],
+            y: [0, 10, -10, 0]
+          }}
+          transition={{ 
+            duration: 5, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
           className="absolute inset-0 z-0 will-change-transform"
         >
           <Image 
@@ -103,7 +113,7 @@ export default function Hero() {
             alt="Tech Background" 
             fill 
             sizes="100vw"
-            className="object-cover opacity-30"
+            className="object-cover opacity-50"
             priority
           />
           {/* Gradient Overlay for Text Contrast */}
@@ -135,7 +145,7 @@ export default function Hero() {
 
       {/* Dynamic Background Overlays */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
+        {/* <motion.div 
           animate={{ 
             scale: [1, 1.1, 1],
             rotate: [0, 5, 0],
@@ -145,7 +155,7 @@ export default function Hero() {
           style={{
             backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
           }}
-        />
+        /> */}
         {/* Subtle Tech Grid */}
         <div 
           className="absolute inset-0 opacity-[0.1]" 
@@ -156,27 +166,27 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container-main relative z-10 w-full grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+      <div className="container-main relative z-10 w-full grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center">
         {/* Left Side: Text Content */}
-        <div className="flex flex-col items-start text-left">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-4 mb-8"
+            className="flex items-center gap-4 mb-6 md:mb-8"
           >
-            <div className="h-[1px] w-12 bg-indigo-500" />
-            <span className="text-[11px] font-black tracking-[0.4em] uppercase text-indigo-400">
+            <div className="h-[1px] w-8 md:w-12 bg-indigo-500" />
+            <span className="text-[10px] md:text-[11px] font-black tracking-[0.4em] uppercase text-indigo-400">
               크리에이티브 디지털 에이전시
             </span>
           </motion.div>
 
-          <div className="relative mb-10">
+          <div className="relative mb-8 md:mb-10">
             <motion.h1 
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.85] tracking-[-0.04em]"
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] lg:leading-[0.85] tracking-[-0.04em]"
             >
               상상을 넘어서는
               <br />
@@ -188,16 +198,16 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="max-w-lg text-base md:text-lg text-gray-300 font-medium leading-relaxed mb-12"
+            className="max-w-lg text-sm md:text-lg text-gray-400 font-medium leading-relaxed mb-10 md:mb-12 px-4 lg:px-0"
           >
             우리는 기술과 예술의 경계를 허물며 브랜드의 본질을 혁신적인 디지털 경험으로 재정의합니다.
           </motion.p>
 
-          <div className="flex items-center gap-8">
+          <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-8 w-full sm:w-auto">
             <MagneticElement>
               <button 
                 onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
-                className="bg-gray-900 text-white px-10 py-5 rounded-full text-xs font-black tracking-[0.2em] uppercase hover:bg-indigo-600 transition-colors shadow-2xl shadow-gray-200"
+                className="w-full sm:w-auto bg-gray-900 text-white px-10 py-5 rounded-full text-xs font-black tracking-[0.2em] uppercase hover:bg-indigo-600 transition-colors shadow-2xl shadow-gray-200"
               >
                 포트폴리오 보기
               </button>
@@ -227,8 +237,8 @@ export default function Hero() {
         >
           <TiltCard className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-gray-900">
             <Image 
-              src="/hero-3d.png" 
-              alt="프리미엄 3D 비주얼" 
+              src="/hero-bg.png" 
+              alt="프리미엄 소프트웨어 개발 비주얼" 
               fill 
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" 
@@ -269,7 +279,7 @@ export default function Hero() {
       <div className="absolute left-10 bottom-24 hidden xl:block">
         <div className="flex items-center gap-4 origin-left -rotate-90">
           <div className="w-8 h-[1px] bg-gray-200" />
-          <span className="text-[9px] font-black tracking-[0.5em] text-gray-300 uppercase">어워즈 오늘의 사이트 2024</span>
+          <span className="text-[9px] font-black tracking-[0.5em] text-gray-300 uppercase">어워즈 오늘의 사이트 2026</span>
         </div>
       </div>
     </section>

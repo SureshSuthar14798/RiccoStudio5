@@ -1,120 +1,149 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { HiArrowRight } from "react-icons/hi2";
 
 const services = [
   {
-    id: "ui-ux",
-    title: "UI/UX 디자인",
-    desc: "매혹적인 인터페이스와 직관적인 사용자 경험을 설계하여 브랜드의 가치를 시각적으로 극대화합니다.",
-    color: "from-indigo-500 to-violet-600",
-    size: "lg",
-    image: "/services/ui-ux.png"
+    id: "01",
+    title: "UI/UX 엔지니어링",
+    subtitle: "사용자 중심의 테크니컬 인터페이스 설계",
+    desc: "모던 IT 오피스 환경에서 최신 설계 도구를 사용하여 복잡한 소프트웨어 아키텍처를 직관적인 사용자 경험으로 변환합니다.",
+    image: "/services/ui-ux.png",
+    color: "#6366f1",
   },
   {
-    id: "web-dev",
-    title: "웹/앱 개발",
-    desc: "최첨단 기술력을 바탕으로 고성능 웹/앱 환경을 구축합니다.",
-    color: "from-cyan-500 to-blue-600",
-    size: "sm",
-    image: "/services/web-dev.png"
+    id: "02",
+    title: "풀스택 소프트웨어 개발",
+    subtitle: "고성능 시스템 및 애플리케이션 구축",
+    desc: "React, Next.js, 그리고 최신 프로그래밍 언어를 사용하여 확장 가능하고 견고한 엔터프라이즈급 소프트웨어 솔루션을 개발합니다.",
+    image: "/services/web-dev.png",
+    color: "#06b6d4",
   },
   {
-    id: "branding",
-    title: "브랜딩",
-    desc: "브랜드의 정체성을 정의하고 시장에서 압도적인 존재감을 부여합니다.",
-    color: "from-violet-500 to-purple-600",
-    size: "sm",
-    image: "/services/branding.png"
+    id: "03",
+    title: "클라우드 인프라",
+    subtitle: "효율적인 시스템 아키텍처 설계",
+    desc: "데이터를 안정적으로 관리하고 확장할 수 있는 현대적인 클라우드 환경과 시스템 인프라를 구축합니다.",
+    image: "/services/strategy.png",
+    color: "#8b5cf6",
   },
   {
-    id: "strategy",
-    title: "전략 수립",
-    desc: "데이터 기반의 비즈니스 전략으로 시장 우위를 점유할 수 있는 솔루션을 제안합니다.",
-    color: "from-orange-500 to-pink-600",
-    size: "md",
-    image: "/services/strategy.png"
+    id: "04",
+    title: "테크니컬 브랜딩",
+    subtitle: "기술 기업을 위한 고유한 정체성",
+    desc: "기술적 전문성과 혁신이 돋보이는 브랜드 아이덴티티를 구축하여 시장에서 차별화된 테크 이미지를 완성합니다.",
+    image: "/services/branding.png",
+    color: "#f43f5e",
   },
 ];
 
-export default function Services() {
+function ServiceCard({ s, index }) {
+  const [isHovered, setIsHovered] = useState(false);
+  
   return (
-    <section id="services" className="section-pad bg-white overflow-hidden">
-      <div className="container-main">
-        {/* Header */}
-        <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-          >
-            <h2 className="text-5xl md:text-7xl font-black text-gray-900 leading-[0.85] tracking-tight">
-              전문적인 <span className="gradient-text italic">전문성.</span>
-            </h2>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="max-w-sm text-gray-400 font-medium leading-relaxed uppercase tracking-widest text-xs"
-          >
-            우리는 기술과 디자인의 완벽한 융합을 통해 디지털 세상에서의 무한한 가능성을 현실로 구현합니다.
-          </motion.p>
+    <motion.div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="group relative border-b border-gray-100 py-12 md:py-20 cursor-pointer overflow-hidden"
+    >
+      <div className="container-main relative z-10 grid lg:grid-cols-[0.5fr_1.5fr_0.5fr] items-center gap-8 md:gap-12">
+        {/* Number */}
+        <span className="text-xl font-black text-gray-200 group-hover:text-indigo-500 transition-colors duration-500">
+          {s.id}
+        </span>
+
+        {/* Content */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tighter group-hover:translate-x-4 transition-transform duration-700 ease-out">
+            {s.title}
+          </h3>
+          <p className="text-gray-400 text-sm md:text-lg font-medium tracking-tight max-w-xl group-hover:text-gray-600 transition-colors duration-500">
+            {s.subtitle}
+          </p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid md:grid-cols-3 gap-6 auto-rows-[280px]">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              whileHover={{ y: -10 }}
-              className={`group relative p-10 rounded-[40px] bg-[#0a0a0a] border border-white/5 flex flex-col justify-between overflow-hidden cursor-pointer ${
-                s.size === "lg" ? "md:col-span-2 md:row-span-2" : s.size === "md" ? "md:col-span-2" : ""
-              }`}
-            >
-              {/* Background Glow */}
-              <div className={`absolute top-0 right-0 w-80 h-80 bg-gradient-to-br ${s.color} opacity-0 group-hover:opacity-20 transition-opacity duration-700 blur-[100px] -translate-y-1/2 translate-x-1/2`} />
+        {/* Arrow / Action */}
+        <div className="flex justify-end">
+          <div className="w-16 h-16 rounded-full border border-gray-100 flex items-center justify-center group-hover:bg-gray-900 group-hover:text-white group-hover:border-gray-900 transition-all duration-500">
+            <HiArrowRight className="text-2xl -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+          </div>
+        </div>
+      </div>
 
-              {/* Service Image Background */}
-              <div className="absolute inset-0 z-0 overflow-hidden">
-                <Image
-                  src={s.image}
-                  alt={s.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none"
-                />
-                {/* Dark Gradient Overlay for Text Readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-500" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 backdrop-blur-[2px] transition-all duration-500" />
-              </div>
+      {/* Hover Image Reveal */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, x: "20%", rotate: 5 }}
+            animate={{ opacity: 1, scale: 1, x: "0%", rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.8, x: "20%", rotate: 5 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute right-[15%] top-1/2 -translate-y-1/2 w-[300px] md:w-[450px] aspect-video rounded-3xl overflow-hidden shadow-2xl pointer-events-none hidden lg:block z-20"
+          >
+            <Image 
+              src={s.image} 
+              alt={s.title} 
+              fill 
+              className="object-cover"
+              sizes="450px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-              <div className="relative z-10">
-                <h3 className={`font-black text-white tracking-tighter mb-4 ${s.size === "lg" ? "text-4xl" : "text-2xl"}`}>
-                  {s.title}
-                </h3>
-                <p className="text-gray-300 font-medium leading-relaxed max-w-[320px] opacity-80 group-hover:opacity-100 transition-opacity">
-                  {s.desc}
-                </p>
-              </div>
+      {/* Background Accent */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-[0.02] transition-opacity duration-700 -z-10" 
+        style={{ backgroundColor: s.color }}
+      />
+    </motion.div>
+  );
+}
 
-              {/* Icon / Footer */}
-              <div className="flex items-center justify-between relative z-10">
-                <div className={`w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white shadow-sm group-hover:bg-white group-hover:text-black transition-all duration-500`}>
-                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12l5-5-5-5"/>
-                  </svg>
-                </div>
-                <span className="text-[10px] font-black tracking-[0.3em] text-white/40 uppercase">서비스 0{i+1}</span>
-              </div>
-            </motion.div>
-          ))}
+export default function Services() {
+  const containerRef = useRef(null);
+
+  return (
+    <section id="services" ref={containerRef} className="py-32 bg-white overflow-hidden">
+      <div className="container-main mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-12"
+        >
+          <div className="max-w-2xl">
+            <span className="text-[10px] font-black tracking-[0.4em] uppercase text-indigo-500 mb-6 block">Our Expertise</span>
+            <h2 className="text-5xl md:text-8xl font-black text-gray-900 leading-[0.85] tracking-tighter">
+              세상을 변화시키는 <br />
+              <span className="gradient-text italic">디지털 전문성.</span>
+            </h2>
+          </div>
+          <p className="max-w-sm text-gray-400 font-medium leading-relaxed">
+            우리는 혁신적인 기술과 창의적인 디자인의 경계에서 브랜드의 무한한 가능성을 현실로 구현합니다.
+          </p>
+        </motion.div>
+      </div>
+
+      <div className="border-t border-gray-100">
+        {services.map((s, i) => (
+          <ServiceCard key={s.id} s={s} index={i} />
+        ))}
+      </div>
+      
+      {/* Scroll Indicator / Label */}
+      <div className="container-main mt-20 flex justify-between items-center text-[10px] font-black tracking-[0.3em] text-gray-300 uppercase">
+        <span>© Ricco Studio 2026</span>
+        <div className="flex gap-8">
+          <span>Explore Services</span>
+          <span>Scroll to Discover</span>
         </div>
       </div>
     </section>

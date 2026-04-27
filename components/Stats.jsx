@@ -81,7 +81,7 @@ export default function Stats() {
       </div>
 
       <div className="container-main relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 lg:gap-8">
           {statsData.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -89,7 +89,7 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="group relative flex flex-col items-center md:items-start text-center md:text-left"
+              className="group relative flex flex-col items-center lg:items-start text-center lg:text-left"
             >
               {/* Animated Line */}
               <motion.div 
@@ -97,20 +97,20 @@ export default function Stats() {
                 whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5 + i * 0.1 }}
-                className="h-[1px] bg-gradient-to-r from-indigo-500 to-transparent mb-8 w-full" 
+                className="h-[1px] bg-gradient-to-r from-indigo-500 to-transparent mb-6 md:mb-8 w-full" 
               />
 
-              <div className="flex items-baseline gap-1 mb-4">
-                <div className="text-6xl md:text-7xl font-black text-white tracking-tighter">
+              <div className="flex items-baseline gap-1 mb-2 md:mb-4">
+                <div className="text-4xl md:text-7xl font-black text-white tracking-tighter">
                   <RollingCounter value={stat.value} suffix={stat.suffix} />
                 </div>
               </div>
               
-              <h3 className="text-sm font-black tracking-[0.3em] uppercase text-indigo-400 mb-4">
+              <h3 className="text-[10px] md:text-sm font-black tracking-[0.3em] uppercase text-indigo-400 mb-2 md:mb-4">
                 {stat.label}
               </h3>
               
-              <p className="text-gray-400 text-sm leading-relaxed max-w-[200px]">
+              <p className="text-gray-500 text-[10px] md:text-sm leading-relaxed max-w-[150px] md:max-w-[200px]">
                 {stat.desc}
               </p>
 
