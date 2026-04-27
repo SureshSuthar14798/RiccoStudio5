@@ -237,7 +237,7 @@ export default function Hero() {
         >
           <TiltCard className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-gray-900">
             <Image 
-              src="/hero-bg.png" 
+              src="/hero-3d.png" 
               alt="프리미엄 소프트웨어 개발 비주얼" 
               fill 
               sizes="(max-width: 768px) 100vw, 50vw"
