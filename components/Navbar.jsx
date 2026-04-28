@@ -61,9 +61,8 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             className="flex items-center gap-2 group relative z-10"
           >
-            <div className={`text-lg md:text-xl font-black tracking-tighter flex items-center transition-colors duration-500 ${scrolled || menuOpen ? "text-gray-900" : "text-white"}`}>
-              <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2" />
-              리코 스튜디오
+            <div className={`text-lg md:text-xl font-black tracking-[-0.04em] flex items-center transition-colors duration-500 ${scrolled || menuOpen ? "text-gray-900" : "text-white"}`}>
+              RICCO<span className="gradient-text italic ml-1">STUDIO</span>
             </div>
           </a>
 
@@ -73,7 +72,7 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNav(link.href)}
-                className={`px-5 py-2 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 relative group ${
+                className={`px-5 py-2 text-[14px] font-black tracking-[0.2em] uppercase transition-all duration-300 relative group ${
                   scrolled ? "text-gray-500 hover:text-indigo-600" : "text-white/70 hover:text-white"
                 }`}
               >

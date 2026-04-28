@@ -37,7 +37,7 @@ export default function Testimonials() {
     <section id="testimonials" className="section-pad bg-white overflow-hidden">
       <div className="container-main">
         {/* Aggressive Header */}
-        <div className="mb-6 lg:mb-10">
+        <div className="mb-2">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,12 +45,12 @@ export default function Testimonials() {
             transition={{ duration: 1 }}
             className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-[0.85] tracking-tighter"
           >
-            고객의 <span className="gradient-text italic">목소리.</span>
+            고객의 <span className="gradient-text italic">목소리</span>
           </motion.h2>
         </div>
 
         {/* Large Scale Reveal */}
-        <div className="relative lg:min-h-[400px] flex flex-col justify-center">
+        <div className="relative lg:min-h-[250px] flex flex-col justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -60,7 +60,7 @@ export default function Testimonials() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-4xl"
             >
-              <div className="text-indigo-500 text-4xl lg:mb-12 font-serif italic">"</div>
+              <div className="text-indigo-500 text-4xl font-serif italic">"</div>
               <blockquote className="text-2xl md:text-4xl font-black text-gray-900 leading-[1.2] tracking-tight mb-12">
                 {testimonials[current].quote}
               </blockquote>

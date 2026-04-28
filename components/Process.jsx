@@ -21,7 +21,7 @@ export default function Process() {
             transition={{ duration: 1 }}
             className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-[0.85] tracking-tighter text-right"
           >
-            작업 <span className="gradient-text italic">과정.</span>
+            작업 <span className="gradient-text italic">과정</span>
           </motion.h2>
         </div>
 

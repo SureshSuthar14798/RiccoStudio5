@@ -11,6 +11,8 @@ export const metadata = {
   },
 };
 
+import Preloader from "@/components/Preloader";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
@@ -23,6 +25,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="antialiased">
+        <Preloader />
         {children}
       </body>
     </html>

@@ -52,7 +52,7 @@ function ServiceCard({ s, index }) {
       transition={{ duration: 0.8, delay: index * 0.1 }}
       className="group relative border-b border-gray-100 py-5 md:py-20 cursor-pointer overflow-hidden"
     >
-      <div className="container-main relative z-10 grid lg:grid-cols-[0.5fr_1.5fr_0.5fr] items-center gap-6 md:gap-12">
+      <div className="container-main relative z-10 grid lg:grid-cols-[0.1fr_1.5fr_0.5fr] items-center gap-6 md:gap-12">
         {/* Number & Arrow for Mobile Row */}
         <div className="flex items-center justify-between lg:block">
           <span className="text-sm md:text-xl font-black text-gray-200 group-hover:text-indigo-500 transition-colors duration-500">
@@ -129,7 +129,7 @@ export default function Services() {
             <span className="text-[10px] font-black tracking-[0.4em] uppercase text-indigo-500 mb-4 md:mb-6 block">Our Expertise</span>
             <h2 className="text-4xl md:text-8xl font-black text-gray-900 leading-[0.9] md:leading-[0.85] tracking-tighter">
               세상을 변화시키는 <br />
-              <span className="gradient-text italic">디지털 전문성.</span>
+              <span className="gradient-text italic">디지털 전문성</span>
             </h2>
           </div>
           <p className="max-w-sm text-gray-400 text-xs md:text-sm font-medium leading-relaxed">

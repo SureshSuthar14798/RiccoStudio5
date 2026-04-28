@@ -107,8 +107,8 @@ export default function Footer() {
                   <path d="M6 7.5L7.5 9L10 6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <span className="font-bold text-base tracking-tight">
-                리코<span className="gradient-text">스튜디오</span>
+              <span className="font-black text-xl tracking-[-0.04em] uppercase">
+                RICCO<span className="gradient-text italic ml-1">STUDIO</span>
               </span>
             </a>
 
@@ -168,7 +168,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             className="text-gray-600 text-xs"
           >
-            © {year} 리코 스튜디오. 모든 권리 보유.
+            © {year} Ricco Studio. All rights reserved.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}

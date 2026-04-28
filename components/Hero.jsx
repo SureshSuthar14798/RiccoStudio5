@@ -190,7 +190,7 @@ export default function Hero() {
             >
               상상을 넘어서는
               <br />
-              <span className="gradient-text italic">제작.</span>
+              <span className="gradient-text italic">제작</span>
             </motion.h1>
           </div>
 
@@ -235,9 +235,9 @@ export default function Hero() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           className="relative hidden lg:block perspective-1000"
         >
-          <TiltCard className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-gray-900">
+          <TiltCard className="relative aspect-[4/5] rounded-[30px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-gray-900">
             <Image 
-              src="/hero-3d.png" 
+              src="/website.png" 
               alt="프리미엄 소프트웨어 개발 비주얼" 
               fill 
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -245,27 +245,6 @@ export default function Hero() {
               priority 
             />
             
-            {/* Visual Glass Overlays */}
-            <motion.div 
-              style={{ transformStyle: "preserve-3d", translateZ: 50 }}
-              whileHover={{ translateZ: 80, scale: 1.05 }}
-              className="absolute top-10 left-10 glass px-6 py-4 rounded-3xl float shadow-2xl cursor-pointer group"
-            >
-              <div className="text-lg font-black text-indigo-600 group-hover:text-indigo-400 transition-colors">8년+</div>
-              <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">경력</div>
-            </motion.div>
-            
-            <motion.div 
-              style={{ transformStyle: "preserve-3d", translateZ: 60 }}
-              whileHover={{ translateZ: 90, scale: 1.05 }}
-              className="absolute bottom-10 right-10 glass px-6 py-4 rounded-3xl cursor-pointer group" 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            >
-              <div className="text-lg font-black text-violet-600 group-hover:text-violet-400 transition-colors">150+</div>
-              <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">성공 사례</div>
-            </motion.div>
-
             {/* Inner Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </TiltCard>

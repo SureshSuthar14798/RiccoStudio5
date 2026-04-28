@@ -36,24 +36,6 @@ export default function FloatingActions() {
         {!isNavOpen && (
           <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] flex flex-col gap-3 md:gap-4">
             <AnimatePresence>
-              {/* Telegram Action */}
-              <motion.a
-                key="telegram"
-                href="https://t.me/yourusername"
-                target="_blank"
-                initial={{ opacity: 0, x: 20, scale: 0.8 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ delay: 0.1 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-11 h-11 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#0088cc] text-white flex items-center justify-center shadow-2xl shadow-blue-500/20 border border-white/20 backdrop-blur-md relative group"
-              >
-                <FaTelegramPlane className="text-xl md:text-2xl" />
-                <span className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-gray-900/90 backdrop-blur-xl text-white text-[10px] font-black whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none uppercase tracking-[0.2em] translate-x-2 group-hover:translate-x-0">
-                  Telegram
-                </span>
-              </motion.a>
-
               {/* CS Center Toggle */}
               <motion.button
                 key="cs"

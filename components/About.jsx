@@ -30,7 +30,7 @@ export default function About() {
             transition={{ duration: 1 }}
           >
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-[0.85] tracking-tighter mb-12">
-              한계를 <span className="gradient-text italic">넘어서.</span>
+              한계를 <span className="gradient-text italic">넘어서</span>
             </h2>
           </motion.div>
           

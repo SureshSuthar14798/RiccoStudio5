@@ -191,7 +191,7 @@ export default function Portfolio() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-[0.9] lg:leading-[0.85] tracking-tight"
           >
-            엄선된 <br className="md:hidden" /> <span className="gradient-text italic">작업.</span>
+            엄선된 <br className="md:hidden" /> <span className="gradient-text italic">작업</span>
           </motion.h2>
 
           {/* Filter tabs */}

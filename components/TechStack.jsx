@@ -47,7 +47,7 @@ export default function TechStack() {
           transition={{ delay: 0.1 }}
           className="text-4xl md:text-5xl mb-8 font-black text-gray-900 tracking-tighter"
         >
-          우리가 사용하는 <span className="gradient-text">핵심 기술.</span>
+          우리가 사용하는 <span className="gradient-text">핵심 기술</span>
         </motion.h2>
       </div>
 

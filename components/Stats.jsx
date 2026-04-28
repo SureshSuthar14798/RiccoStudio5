@@ -1,40 +1,48 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
-function RollingDigit({ value }) {
+function RollingDigit({ digit, isInView, delay = 0 }) {
   return (
-    <div className="relative inline-block overflow-hidden h-[1.1em] leading-none">
-      <AnimatePresence mode="popLayout">
-        <motion.span
-          key={value}
-          initial={{ y: "100%" }}
-          animate={{ y: "0%" }}
-          exit={{ y: "-100%" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-block"
-        >
-          {value}
-        </motion.span>
-      </AnimatePresence>
+    <div className="relative inline-block overflow-hidden h-[1em] leading-none">
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: isInView ? `-${digit * 10}%` : 0 }}
+        transition={{ 
+          duration: 2, 
+          ease: [0.16, 1, 0.3, 1],
+          delay: delay 
+        }}
+        className="flex flex-col"
+      >
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+          <span key={n} className="h-[1em] flex items-center justify-center">
+            {n}
+          </span>
+        ))}
+      </motion.div>
     </div>
   );
 }
 
-function RollingCounter({ value, suffix = "" }) {
+function RollingCounter({ value, isInView, index }) {
   const digits = value.toString().split("");
   
   return (
-    <div className="flex items-baseline overflow-hidden">
+    <div className="flex items-baseline">
       {digits.map((digit, i) => (
-        <RollingDigit key={`${i}-${digit}`} value={digit} />
+        <RollingDigit 
+          key={i} 
+          digit={parseInt(digit)} 
+          isInView={isInView} 
+          delay={0.1 + (index * 0.1) + (i * 0.1)} 
+        />
       ))}
-      <span className="ml-1">{suffix}</span>
     </div>
   );
 }
 
-const initialStats = [
+const stats = [
   { label: "성공적인 프로젝트", value: 250, suffix: "+", desc: "국내외 유수의 기업들과 함께한 혁신적 결과물" },
   { label: "전문가 팀원", value: 45, suffix: "명", desc: "디자인, 개발, 기획 분야의 최고 수준 전문가들" },
   { label: "고객 만족도", value: 98, suffix: "%", desc: "협업 파트너들의 지속적인 신뢰와 높은 평가" },
@@ -42,33 +50,14 @@ const initialStats = [
 ];
 
 export default function Stats() {
-  const [statsData, setStatsData] = useState(initialStats);
   const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
-  // Auto update one stat every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStatsData(prev => {
-        const randomIndex = Math.floor(Math.random() * prev.length);
-        const newData = [...prev];
-        // Only increment projects or awards slightly for realism
-        if (randomIndex === 0 || randomIndex === 3) {
-          newData[randomIndex] = { ...newData[randomIndex], value: newData[randomIndex].value + 1 };
-        } else if (randomIndex === 1 && Math.random() > 0.7) {
-          newData[randomIndex] = { ...newData[randomIndex], value: newData[randomIndex].value + 1 };
-        }
-        return newData;
-      });
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section ref={containerRef} className="relative py-24 lg:py-32 bg-[#050505] overflow-hidden">
@@ -82,7 +71,7 @@ export default function Stats() {
 
       <div className="container-main relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 lg:gap-8">
-          {statsData.map((stat, i) => (
+          {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 30 }}
@@ -101,8 +90,9 @@ export default function Stats() {
               />
 
               <div className="flex items-baseline gap-1 mb-2 md:mb-4">
-                <div className="text-4xl md:text-7xl font-black text-white tracking-tighter">
-                  <RollingCounter value={stat.value} suffix={stat.suffix} />
+                <div className="text-4xl md:text-7xl font-black text-white tracking-tighter flex items-baseline">
+                  <RollingCounter value={stat.value} isInView={isInView} index={i} />
+                  <span className="text-2xl md:text-5xl ml-1">{stat.suffix}</span>
                 </div>
               </div>
               

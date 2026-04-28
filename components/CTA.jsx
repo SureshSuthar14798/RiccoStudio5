@@ -52,47 +52,9 @@ export default function CTA() {
           >
             꿈을 현실로
             <br />
-            <span className="gradient-text italic">실현하세요.</span>
+            <span className="gradient-text italic">실현하세요</span>
           </motion.h2>
 
-          {/* Minimalist Contact Form */}
-          <motion.form
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-            onSubmit={handleSubmit}
-            className="w-full max-w-2xl relative"
-          >
-            <div className="relative group">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="이메일 주소를 입력하세요"
-                className="w-full bg-transparent border-b border-gray-800 py-6 text-xl md:text-3xl font-black text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-all duration-500 uppercase tracking-tighter"
-                required
-              />
-              <button
-                type="submit"
-                className="absolute right-0 bottom-6 p-4 rounded-full bg-white text-gray-900 hover:bg-indigo-500 hover:text-white transition-all duration-500 hover:scale-110 active:scale-95"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </button>
-            </div>
-            
-            {sent && (
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="absolute left-0 top-full mt-6 text-indigo-400 font-bold tracking-widest text-xs uppercase"
-              >
-                ✓ 메시지가 전송되었습니다. 곧 연락드리겠습니다.
-              </motion.div>
-            )}
-          </motion.form>
 
           {/* Footer Subtext */}
           <motion.div
@@ -100,7 +62,7 @@ export default function CTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="mt-10 lg:mt-32 flex gap-12 text-[10px] font-black tracking-[0.2em] text-gray-600 uppercase"
+            className="flex gap-12 text-[10px] font-black tracking-[0.2em] text-gray-600 uppercase"
           >
             <span>서울, 대한민국</span>
             <span>2016년 설립</span>
