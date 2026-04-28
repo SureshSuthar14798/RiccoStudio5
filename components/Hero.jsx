@@ -207,7 +207,7 @@ export default function Hero() {
             <MagneticElement>
               <button 
                 onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full sm:w-auto bg-gray-900 text-white px-10 py-5 rounded-full text-xs font-black tracking-[0.2em] uppercase hover:bg-indigo-600 transition-colors shadow-2xl shadow-gray-200"
+                className="w-full sm:w-auto bg-gray-900 text-white px-10 py-5 rounded-full text-xs font-black tracking-[0.2em] uppercase hover:bg-indigo-600 transition-colors shadow-lg shadow-gray-600"
               >
                 포트폴리오 보기
               </button>

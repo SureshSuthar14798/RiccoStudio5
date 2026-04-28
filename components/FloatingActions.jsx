@@ -51,7 +51,7 @@ export default function FloatingActions() {
                 <span className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-gray-900/90 backdrop-blur-xl text-white text-[10px] font-black whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none uppercase tracking-[0.2em] translate-x-2 group-hover:translate-x-0">
                   CS Center
                 </span>
-                <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-[#050505] rounded-full animate-pulse" />
+                {/* <div className="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 border-2 border-[#050505] rounded-full animate-pulse" /> */}
               </motion.button>
 
               {/* Scroll To Top */}
@@ -122,14 +122,22 @@ export default function FloatingActions() {
                 {/* Content */}
                 <div className="p-8 space-y-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <button className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gray-50 hover:bg-indigo-50 transition-colors group">
+                    <a 
+                      href="https://t.me/your_telegram_id" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gray-50 hover:bg-indigo-50 transition-colors group"
+                    >
                       <FaTelegramPlane className="text-3xl text-blue-500 group-hover:scale-110 transition-transform" />
                       <span className="text-xs font-black text-gray-900">실시간 상담</span>
-                    </button>
-                    <button className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gray-50 hover:bg-indigo-50 transition-colors group">
+                    </a>
+                    <a 
+                      href="mailto:contact@riccostudio.com"
+                      className="flex flex-col items-center gap-3 p-6 rounded-3xl bg-gray-50 hover:bg-indigo-50 transition-colors group"
+                    >
                       <div className="text-3xl group-hover:scale-110 transition-transform">📧</div>
                       <span className="text-xs font-black text-gray-900">메일 문의</span>
-                    </button>
+                    </a>
                   </div>
 
                   <div className="space-y-3">

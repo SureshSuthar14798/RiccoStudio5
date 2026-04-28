@@ -117,7 +117,7 @@ export default function Services() {
   const containerRef = useRef(null);
 
   return (
-    <section id="services" ref={containerRef} className="pb-0 py-20 md:py-32 bg-white overflow-hidden">
+    <section id="services" ref={containerRef} className="pb-0 lg:pb-10 py-20 md:py-32 bg-white overflow-hidden">
       <div className="container-main mb-12 md:mb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
